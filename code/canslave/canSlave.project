@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="canSlave" InternalType="Console">
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
+    </Plugin>
+    <Plugin Name="CMakePlugin">
+      <![CDATA[[{
+		"name":	"Debug",
+		"enabled":	false,
+		"buildDirectory":	"build",
+		"sourceDirectory":	"$(ProjectPath)",
+		"generator":	"",
+		"buildType":	"",
+		"arguments":	[],
+		"parentProject":	""
+	}, {
+		"name":	"Release",
+		"enabled":	false,
+		"buildDirectory":	"build",
+		"sourceDirectory":	"$(ProjectPath)",
+		"generator":	"",
+		"buildType":	"",
+		"arguments":	[],
+		"parentProject":	""
+	}]]]>
+    </Plugin>
+  </Plugins>
+  <Description/>
+  <Dependencies/>
+  <VirtualDirectory Name="src">
+    <File Name="src/adc.c"/>
+    <File Name="src/can.c"/>
+    <File Name="src/core_cm0.c"/>
+    <File Name="src/gpio.c"/>
+    <File Name="src/main.c"/>
+    <File Name="src/slave.c"/>
+    <File Name="src/ssp.c"/>
+    <File Name="src/syscalls.c"/>
+    <File Name="src/startup.c"/>
+    <File Name="src/ntc.c"/>
+    <File Name="src/iap.c"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="include">
+    <File Name="include/adc.h"/>
+    <File Name="include/can.h"/>
+    <File Name="include/config.h"/>
+    <File Name="include/core_cm0.h"/>
+    <File Name="include/core_cmFunc.h"/>
+    <File Name="include/core_cmInstr.h"/>
+    <File Name="include/cr_section_macros.h"/>
+    <File Name="include/crp.h"/>
+    <File Name="include/gpio.h"/>
+    <File Name="include/LPC11xx.h"/>
+    <File Name="include/main.h"/>
+    <File Name="include/rom_driver_CAN.h"/>
+    <File Name="include/rom_drivers.h"/>
+    <File Name="include/slave.h"/>
+    <File Name="include/ssp.h"/>
+    <File Name="include/type.h"/>
+    <File Name="include/ntc.h"/>
+    <File Name="include/iap.h"/>
+  </VirtualDirectory>
+  <Settings Type="Executable">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="" Assembler="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="arm-none-eabi-GCC" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="overwrite" BuildResWithGlobalSettings="append">
+      <Compiler Options="-O0;-g;-Wall;-mcpu=cortex-m0;-mthumb" C_Options="-O0;-g;-Wall;-mcpu=cortex-m0;-mthumb" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" UseDifferentPCHFlags="no" PCHFlags="">
+        <IncludePath Value="."/>
+        <IncludePath Value="include"/>
+      </Compiler>
+      <Linker Options="-T&quot;lpc11c14.ld&quot; -Wl,-Map,canSlave.map -nostdlib -mcpu=cortex-m0 -mthumb" Required="yes">
+        <Library Value="gcov"/>
+        <Library Value="c"/>
+        <Library Value="gcc"/>
+      </Linker>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Debug" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="yes" RemoteHostName="localhost" RemoteHostPort="2331" DebuggerPath="/Users/david/Development/foreign/arm-none-eabi/bin/arm-none-eabi-gdb">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands>monitor flash device = LPC11C14
+monitor flash download = 1
+monitor flash breakpoints = 1
+monitor speed 1000
+monitor halt
+load
+monitor reset 0
+</PostConnectCommands>
+        <StartupCommands>file canSlave</StartupCommands>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths>src
+include</SearchPaths>
+      </Completion>
+    </Configuration>
+    <Configuration Name="Release" CompilerType="arm-none-eabi-GCC" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-O2;-Wall" C_Options="-O2;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" UseDifferentPCHFlags="no" PCHFlags="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Release" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths>src
+include</SearchPaths>
+      </Completion>
+    </Configuration>
+  </Settings>
+</CodeLite_Project>
